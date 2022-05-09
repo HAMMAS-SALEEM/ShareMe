@@ -33,6 +33,10 @@ Then run:
 - bundle install
 - npm install
 ```
+Create Database (Mandatory)
+```
+rake db:create
+```
 run ShareMe app on server:
 ```
 rails s
