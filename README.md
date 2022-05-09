@@ -35,7 +35,7 @@ Then run:
 ```
 Create Database (Mandatory)
 ```
-rake db:create
+rake db:create ShareMe
 ```
 run ShareMe app on server:
 ```
