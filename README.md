@@ -34,8 +34,10 @@ Then run:
 - npm install
 ```
 Create Database (Mandatory)
+
 ```
-rake db:create ShareMe
+rails db:create
+rails db:migrate
 ```
 run ShareMe app on server:
 ```
