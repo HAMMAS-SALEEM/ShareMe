@@ -1,4 +1,4 @@
-# Rails_App_Template
+# ShareMe
 
 ShareMe is a Blog Website. It contains posts of different users. It is built on Ruby on Rails.
 
