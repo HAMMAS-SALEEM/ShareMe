@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Posts", type: :request do
-  describe "GET /index" do
+RSpec.describe 'Posts', type: :request do
+  describe 'GET /index' do
     before(:example) { get '/users/show/posts' }
-    it "renders http status" do
+    it 'renders http status' do
       expect(response).to have_http_status :ok
     end
 
@@ -11,14 +11,14 @@ RSpec.describe "Posts", type: :request do
       expect(response).to render_template :index
     end
 
-    it "renders correct placeholder" do
+    it 'renders correct placeholder' do
       expect(response.body).to include '<h1>Posts#index</h1>'
     end
   end
 
-  describe "GET /show" do
-    before(:example) { get "/users/show/posts/show" }
-    it "renders http status" do
+  describe 'GET /show' do
+    before(:example) { get '/users/show/posts/show' }
+    it 'renders http status' do
       expect(response).to have_http_status :ok
     end
 
@@ -26,7 +26,7 @@ RSpec.describe "Posts", type: :request do
       expect(response).to render_template :show
     end
 
-    it "renders correct placeholder" do
+    it 'renders correct placeholder' do
       expect(response.body).to include '<h1>Single post</h1>'
     end
   end
