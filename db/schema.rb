@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_124950) do
     t.datetime "updated_at", null: false
     t.bigint "Posts_Counter"
   end
+  
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
