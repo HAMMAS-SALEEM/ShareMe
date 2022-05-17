@@ -1,17 +1,17 @@
 <% @users.each do |person| %>
-    <li>
-      <ul>
-        <li>
-          <img src=<%= person.Photo %> alt="user image" />
-          <h2><%= person.Name %></h2>
-          <p>Number of Posts: 
-            <% if person.Posts_Counter == nil %>
-                0
-              <% else %>
-                <%= person.Posts_Counter %>
-            <% end %>
-          </p>
-        </li>
-      </ul>
-    </li>
+  <li>
+    <ul>
+      <li>
+        <img src=<%= person.Photo %> alt="user image" />
+        <h2><%= person.Name %></h2>
+        <p>Number of Posts: 
+          <% if person.Posts_Counter == nil %>
+            0
+          <% else %>
+            <%= person.Posts_Counter %>
+          <% end %>
+        </p>
+      </li>
+    </ul>
+  </li>
 <% end %>
