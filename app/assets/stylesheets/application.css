@@ -22,3 +22,19 @@
 li {
   list-style: none;
 }
+
+.user_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.user_image {
+  width: 100px;
+}
+
+.total_posts {
+  align-self: flex-end;
+}

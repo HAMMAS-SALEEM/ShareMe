@@ -1,10 +1,10 @@
 <% @users.each do |person| %>
   <li>
     <ul>
-      <li>
-        <img src=<%= person.Photo %> alt="user image" />
+      <li class = "user_container">
+        <img class = "user_image" src=<%= person.Photo %> alt="user image" />
         <h2><%= person.Name %></h2>
-        <p>Number of Posts: 
+        <p class = "total_posts">Number of Posts: 
           <% if person.Posts_Counter == nil %>
             0
           <% else %>
