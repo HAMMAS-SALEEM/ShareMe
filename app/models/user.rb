@@ -4,9 +4,6 @@ class User < ApplicationRecord
   has_many :comments
 
   def recent_users
-    users = User.all
-    users.each do |person|
-      "Username is #{person}"
-    end
+    posts.limit(3).order(created_at: :desc)
   end
 end
