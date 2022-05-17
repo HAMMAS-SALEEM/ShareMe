@@ -19,12 +19,12 @@
     </p>
   </li>
   <li>
-    <ul>
+    if @post.comments.zero?
+      <span>No comments posted</span>
+    else
       <% @post.comments.each do |comment| %>
-        <li>
-          <p><%= comment.user.Name %>: <%= comment.Text %></p>
-        </li>
+        <p class = "comments_container"><%= comment.user.Name %>: <%= comment.Text %></p>
       <% end %>
-    </ul>
+    end
   </li>
 </ul>

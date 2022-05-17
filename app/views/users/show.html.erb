@@ -1,43 +1,50 @@
-<li>
-  <ul>
-    <li class = "user_container">
-      <img class = "user_image" src=<%= @user.Photo %> alt="user image" />
-      <h2><%= @user.Name %></h2>
-      <p class = "total_posts">Number of Posts: 
-        <% if @user.Posts_Counter == nil %>
-          0
-        <% else %>
-          <%= @user.Posts_Counter %>
-        <% end %>
-      </p>
-    </li>
-  </ul>
-</li>
-<li>
-  <p><%=@user.Bio%></p>
-</li>
-<li>
-  <ul>
-    <% @posts.each_with_index do |post, index| %>
-      <li>
-        <h3>Post: <%=index+1%></h3>
-        <p><%=post.Text%></p>
-        <p>Comments: 
-          <% if post.CommentsCounter == nil %>
+<ul class = "page_body">
+  <li>
+    <ul>
+      <li class = "user_container">
+        <img class = "user_image" src=<%= @user.Photo %> alt="user image" />
+        <h2><%= @user.Name %></h2>
+        <p class = "total_posts">Number of Posts: 
+          <% if @user.Posts_Counter == nil %>
             0
           <% else %>
-            <%= post.CommentsCounter %>
+            <%= @user.Posts_Counter %>
           <% end %>
-        <p>Likes: 
-          <% if post.LikesCounter == nil %>
-            0
-          <% else %>
-            <%= post.LikesCounter %>
-          <% end %>
-      <li>
-    <% end %>
-  </ul>
-<li>
-<li>
-  <button type="button">See all posts</button>
-</li>
+        </p>
+      </li>
+    </ul>
+  </li>
+  <li class="user_bio_container">
+    <h3 class = "bio_label">Bio</h3>
+    <p class = "user_bio"><%=@user.Bio%></p>
+  </li>
+  <li>
+    <ul>
+      <% @posts.each_with_index do |post, index| %>
+        <li class = "post_card">
+          <h3>Post: <%=index+1%></h3>
+          <p class = "post_text"><%=post.Text%></p>
+          <div class = "post_interactions">
+            <p>Comments: 
+              <% if post.CommentsCounter == nil %>
+                0
+              <% else %>
+                <%= post.CommentsCounter %>
+              <% end %>
+            </p>
+            <p>Likes: 
+              <% if post.LikesCounter == nil %>
+                0
+              <% else %>
+                <%= post.LikesCounter %>
+              <% end %>
+            </p>
+          </div>
+        <li>
+      <% end %>
+    </ul>
+  <li>
+  <li class = "post_button_container">
+    <button type="button" class = "posts_button">See all posts</button>
+  </li>
+</ul>

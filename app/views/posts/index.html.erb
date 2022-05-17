@@ -1,44 +1,52 @@
-<li>
-  <ul>
-    <li>
-      <img src=<%= @user.Photo %> alt="user image" />
-      <h2><%= @user.Name %></h2>
-      <p>Number of Posts: 
-        <% if @user.Posts_Counter == nil %>
-          0
-        <% else %>
-          <%= @user.Posts_Counter %>
-        <% end %>
-      </p>
-    </li>
-  </ul>
-</li>
-<li>
-  <% @posts.each_with_index do |post, index| %>
+<ul class = "page_body">
+  <li>
     <ul>
-      <li>
-        <h3>Post: <%=index+1%></h3>
-        <p><%=post.Text%></p>
-        <p>Comments: 
-          <% if post.CommentsCounter == nil %>
+      <li class = "user_container">
+        <img class = "user_image" src=<%= @user.Photo %> alt="user image" />
+        <h2><%= @user.Name %></h2>
+        <p class = "total_posts">Number of Posts: 
+          <% if @user.Posts_Counter == nil %>
             0
           <% else %>
-            <%= post.CommentsCounter %>
+            <%= @user.Posts_Counter %>
           <% end %>
         </p>
-        <p>Likes: 
-          <% if post.LikesCounter == nil %>
-            0
-          <% else %>
-            <%= post.LikesCounter %>
-          <% end %>
-        </p>
-      </li>
-      <li>
-        <% post.comments.each do |comment| %>
-            <p> <%= comment.user.Name %>: <%= comment.Text %> </p>
-        <% end %>
       </li>
     </ul>
-  <% end %>
-</li>
+  </li>
+  <li>
+    <% @posts.each_with_index do |post, index| %>
+      <ul>
+        <li class = "post_card">
+          <h3>Post: <%=index+1%></h3>
+          <p class = "post_text"><%=post.Text%></p>
+          <div class = "post_interactions">
+            <p>Comments: 
+              <% if post.CommentsCounter == nil %>
+                0
+              <% else %>
+                <%= post.CommentsCounter %>
+              <% end %>
+            </p>
+            <p>Likes: 
+              <% if post.LikesCounter == nil %>
+                0
+              <% else %>
+                <%= post.LikesCounter %>
+              <% end %>
+            </p>
+          </div>
+        </li>
+        <li class = "comments_container">
+          <% if post.comments.length == 0 %>
+            <p>No comments posted</p>
+          <% else %>
+            <% post.comments.each do |comment| %>
+              <p><%= comment.user.Name %>: <%= comment.Text %></p>
+            <% end %>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+  </li>
+</ul>

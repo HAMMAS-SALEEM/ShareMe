@@ -23,12 +23,15 @@ li {
   list-style: none;
 }
 
+.page_body {
+  padding: 20px;
+}
+
 .user_container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 20px;
 }
 
 .user_image {
@@ -38,3 +41,45 @@ li {
 .total_posts {
   align-self: flex-end;
 }
+
+.bio_label {
+  margin-bottom: 30px;
+}
+
+.post_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.post_interactions {
+  align-self: flex-end;
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.post_button_container {
+  display: flex;
+  justify-content: center;
+}
+
+.posts_button {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.post_text,
+.post_card,
+.posts_button {
+  margin-top: 12px;
+}
+
+.user_bio_container,
+.post_card,
+.comments_container {
+  padding: 12px;
+  border: 1px solid black;
+}
+
