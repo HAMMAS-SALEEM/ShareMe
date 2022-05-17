@@ -1,2 +1,42 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<li>
+  <ul>
+    <li>
+      <img src=<%= @user.Photo %> alt="user image" />
+      <h2><%= @user.Name %></h2>
+      <p>Number of Posts: 
+        <% if @user.Posts_Counter == nil %>
+          0
+        <% else %>
+          <%= @user.Posts_Counter %>
+        <% end %>
+      </p>
+    </li>
+  </ul>
+</li>
+<li>
+  <% @posts.each_with_index do |post, index| %>
+    <ul>
+      <li>
+        <h3>Post: <%=index+1%></h3>
+        <p><%=post.Text%></p>
+        <p>Comments: 
+          <% if post.CommentsCounter == nil %>
+            0
+          <% else %>
+            <%= post.CommentsCounter %>
+          <% end %>
+        <p>Likes: 
+          <% if post.LikesCounter == nil %>
+            0
+          <% else %>
+            <%= post.LikesCounter %>
+          <% end %>
+      <li>
+      <li>
+        <% post.comments.each do |comment| %>
+            <p> <%= comment.user.Name %>: <%= comment.Text %> </p>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+</li>
