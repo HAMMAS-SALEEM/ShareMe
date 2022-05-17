@@ -1,17 +1,30 @@
-<li>
-  <ul>
-    <li>
-      <p>Post: <%= @post.id %> by <%= @post.user.Name %> </p>
-      <p><%= @post.Text %></p>
-    </li>
-    <li>
-      <ul>
-        <% @post.comments.each do |comment| %>
-          <li>
-            <p><%= comment.user.Name %>: <%= comment.Text %></p>
-          </li>
-        <% end %>
-      </ul>
-    </li>
-  </ul>
-</li>
+<ul>
+  <li>
+    <p>Post: <%= @post.id %> by <%= @post.user.Name %> </p>
+    <p><%= @post.Text %></p>
+  </li>
+  <li>
+    <p>Comments: 
+      <% if @post.CommentsCounter == nil %>
+        0
+      <% else %>
+        <%= @post.CommentsCounter %>
+      <% end %>
+    <p>Likes: 
+      <% if @post.LikesCounter == nil %>
+        0
+      <% else %>
+        <%= @post.LikesCounter %>
+      <% end %>
+    </p>
+  </li>
+  <li>
+    <ul>
+      <% @post.comments.each do |comment| %>
+        <li>
+          <p><%= comment.user.Name %>: <%= comment.Text %></p>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+</ul>

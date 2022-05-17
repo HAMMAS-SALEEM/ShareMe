@@ -25,13 +25,15 @@
           <% else %>
             <%= post.CommentsCounter %>
           <% end %>
+        </p>
         <p>Likes: 
           <% if post.LikesCounter == nil %>
             0
           <% else %>
             <%= post.LikesCounter %>
           <% end %>
-      <li>
+        </p>
+      </li>
       <li>
         <% post.comments.each do |comment| %>
             <p> <%= comment.user.Name %>: <%= comment.Text %> </p>
