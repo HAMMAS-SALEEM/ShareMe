@@ -1,30 +1,38 @@
-<ul>
-  <li>
-    <p>Post: <%= @post.id %> by <%= @post.user.Name %> </p>
-    <p><%= @post.Text %></p>
+<ul class = "page_body">
+  <li class = "complete_post">
+    <ul class = "post_head">
+      <li>
+        <p>Post: <%= @post.id %> by <%= @post.user.Name %> </p>
+      </li>
+      <li class = "post_interactions">
+        <p>Comments: 
+          <% if @post.CommentsCounter == nil %>
+            0
+          <% else %>
+            <%= @post.CommentsCounter %>
+          <% end %>
+        <p>Likes: 
+          <% if @post.LikesCounter == nil %>
+            0
+          <% else %>
+            <%= @post.LikesCounter %>
+          <% end %>
+        </p>
+      </li>
+    </ul>
+    <ul>
+      <li class = "post_complete_text">
+        <p><%= @post.Text %></p>
+      </li>
+    </ul>
   </li>
-  <li>
-    <p>Comments: 
-      <% if @post.CommentsCounter == nil %>
-        0
-      <% else %>
-        <%= @post.CommentsCounter %>
-      <% end %>
-    <p>Likes: 
-      <% if @post.LikesCounter == nil %>
-        0
-      <% else %>
-        <%= @post.LikesCounter %>
-      <% end %>
-    </p>
-  </li>
-  <li>
-    if @post.comments.zero?
+  <li class = "comments_container">
+    <%if @post.comments.length == 0 %>
       <span>No comments posted</span>
-    else
+    <% else %>
       <% @post.comments.each do |comment| %>
-        <p class = "comments_container"><%= comment.user.Name %>: <%= comment.Text %></p>
+        <p><%= comment.user.Name %>: <%= comment.Text %></p>
       <% end %>
-    end
+    <% end %>
   </li>
 </ul>

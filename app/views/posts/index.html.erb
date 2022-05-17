@@ -1,16 +1,18 @@
 <ul class = "page_body">
   <li>
     <ul>
-      <li class = "user_container">
+      <li class = "user_details">
         <img class = "user_image" src=<%= @user.Photo %> alt="user image" />
-        <h2><%= @user.Name %></h2>
-        <p class = "total_posts">Number of Posts: 
-          <% if @user.Posts_Counter == nil %>
-            0
-          <% else %>
-            <%= @user.Posts_Counter %>
-          <% end %>
-        </p>
+        <div class = "user_data">
+          <h2><%= @user.Name %></h2>
+          <p class = "total_posts">Number of Posts: 
+            <% if @user.Posts_Counter == nil %>
+              0
+            <% else %>
+              <%= @user.Posts_Counter %>
+            <% end %>
+          </p>
+        </div>
       </li>
     </ul>
   </li>
@@ -48,5 +50,8 @@
         </li>
       </ul>
     <% end %>
+  </li>
+  <li class = "pagination_button_container">
+    <button type="button" class = "pagination_button">Pagination</button>
   </li>
 </ul>

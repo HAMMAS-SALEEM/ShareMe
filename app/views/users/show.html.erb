@@ -1,16 +1,18 @@
 <ul class = "page_body">
   <li>
     <ul>
-      <li class = "user_container">
+      <li class = "user_details">
         <img class = "user_image" src=<%= @user.Photo %> alt="user image" />
-        <h2><%= @user.Name %></h2>
-        <p class = "total_posts">Number of Posts: 
-          <% if @user.Posts_Counter == nil %>
-            0
-          <% else %>
-            <%= @user.Posts_Counter %>
-          <% end %>
-        </p>
+        <div class = "user_data">
+          <h2><%= @user.Name %></h2>
+          <p class = "total_posts">Number of Posts: 
+            <% if @user.Posts_Counter == nil %>
+              0
+            <% else %>
+              <%= @user.Posts_Counter %>
+            <% end %>
+          </p>
+        </div>
       </li>
     </ul>
   </li>
@@ -23,7 +25,7 @@
       <% @posts.each_with_index do |post, index| %>
         <li class = "post_card">
           <h3>Post: <%=index+1%></h3>
-          <p class = "post_text"><%=post.Text%></p>
+          <p class = "post_text"><%=post.Title%></p>
           <div class = "post_interactions">
             <p>Comments: 
               <% if post.CommentsCounter == nil %>
