@@ -37,8 +37,15 @@ Create Database (Mandatory)
 
 ```
 rails db:create
+rails db:schema:load
+```
+
+If you have made a migration the run this command
+
+```
 rails db:migrate
 ```
+
 run ShareMe app on server:
 ```
 rails s
