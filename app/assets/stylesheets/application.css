@@ -1,15 +1,87 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+.page_body {
+  padding: 20px;
+}
+
+.user_details {
+  align-items: center;
+  width: 100%;
+}
+
+.user_data {
+  align-items: center;
+  width: 80%;
+  height: 100px;
+}
+
+.user_image {
+  width: 100px;
+}
+
+.total_posts {
+  align-self: flex-end;
+}
+
+.bio_label {
+  margin-bottom: 30px;
+}
+
+.post_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.post_interactions {
+  align-self: flex-end;
+  width: 150px;
+}
+
+.post_button_container,
+.pagination_button_container {
+  display: flex;
+  justify-content: center;
+}
+
+.posts_button,
+.pagination_button {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.user_data,
+.user_bio_container,
+.post_card,
+.comments_container,
+.complete_post {
+  padding: 12px;
+  border: 1px solid black;
+}
+
+ul .user_container:not(:first-child),
+.user_bio_container,
+.post_text,
+.post_card,
+.posts_button,
+.pagination_button,
+.post_complete_text {
+  margin-top: 12px;
+}
+
+.user_details,
+.user_data,
+.post_interactions,
+.post_head {
+  display: flex;
+  justify-content: space-between;
+}

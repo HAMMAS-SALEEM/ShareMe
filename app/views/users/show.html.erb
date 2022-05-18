@@ -1,2 +1,52 @@
-<h1>Single User</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<ul class = "page_body">
+  <li>
+    <ul>
+      <li class = "user_details">
+        <img class = "user_image" src=<%= @user.Photo %> alt="user image" />
+        <div class = "user_data">
+          <h2><%= @user.Name %></h2>
+          <p class = "total_posts">Number of Posts: 
+            <% if @user.Posts_Counter == nil %>
+              0
+            <% else %>
+              <%= @user.Posts_Counter %>
+            <% end %>
+          </p>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li class="user_bio_container">
+    <h3 class = "bio_label">Bio</h3>
+    <p class = "user_bio"><%=@user.Bio%></p>
+  </li>
+  <li>
+    <ul>
+      <% @posts.each_with_index do |post, index| %>
+        <li class = "post_card">
+          <h3>Post: <%=index+1%></h3>
+          <p class = "post_text"><%=post.Title%></p>
+          <div class = "post_interactions">
+            <p>Comments: 
+              <% if post.CommentsCounter == nil %>
+                0
+              <% else %>
+                <%= post.CommentsCounter %>
+              <% end %>
+            </p>
+            <p>Likes: 
+              <% if post.LikesCounter == nil %>
+                0
+              <% else %>
+                <%= post.LikesCounter %>
+              <% end %>
+            </p>
+          </div>
+        <li>
+      <% end %>
+    </ul>
+  <li>
+  <li class = "post_button_container">
+    <button type="button" class = "posts_button">See all posts</button>
+  </li>
+</ul>

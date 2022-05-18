@@ -1,2 +1,57 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<ul class = "page_body">
+  <li>
+    <ul>
+      <li class = "user_details">
+        <img class = "user_image" src=<%= @user.Photo %> alt="user image" />
+        <div class = "user_data">
+          <h2><%= @user.Name %></h2>
+          <p class = "total_posts">Number of Posts: 
+            <% if @user.Posts_Counter == nil %>
+              0
+            <% else %>
+              <%= @user.Posts_Counter %>
+            <% end %>
+          </p>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <% @posts.each_with_index do |post, index| %>
+      <ul>
+        <li class = "post_card">
+          <h3>Post: <%=index+1%></h3>
+          <p class = "post_text"><%=post.Text%></p>
+          <div class = "post_interactions">
+            <p>Comments: 
+              <% if post.CommentsCounter == nil %>
+                0
+              <% else %>
+                <%= post.CommentsCounter %>
+              <% end %>
+            </p>
+            <p>Likes: 
+              <% if post.LikesCounter == nil %>
+                0
+              <% else %>
+                <%= post.LikesCounter %>
+              <% end %>
+            </p>
+          </div>
+        </li>
+        <li class = "comments_container">
+          <% if post.comments.length == 0 %>
+            <p>No comments posted</p>
+          <% else %>
+            <% post.comments.each do |comment| %>
+              <p><%= comment.user.Name %>: <%= comment.Text %></p>
+            <% end %>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+  </li>
+  <li class = "pagination_button_container">
+    <button type="button" class = "pagination_button">Pagination</button>
+  </li>
+</ul>
