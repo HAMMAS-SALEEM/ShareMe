@@ -1,0 +1,6 @@
+<h1>Create Comments</h1>
+
+<%= form_with model: @comment, url: user_post_comments_path do |form| %>
+  <%= form.text_area :Text, size: '20x10' %>
+  <%= form.submit 'Submit' %>
+<% end %>
