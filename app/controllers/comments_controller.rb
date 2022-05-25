@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  # load_and_authorize_resource nested: :post
+  load_and_authorize_resource nested: :post
 
   def new
     @comment = Comment.new
@@ -16,6 +16,8 @@ class CommentsController < ApplicationController
       flash[:notice] = 'Comment is not created'
     end
   end
+
+  def destroy; end
 
   private
 

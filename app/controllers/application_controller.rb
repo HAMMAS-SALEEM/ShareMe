@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  rescue_from ActiveRecord::RecordNotFound do |_exception|
+    flash[:error] = 'No record found'
+    redirect_to root_path
+  end
+
   add_flash_types :danger, :info, :warning, :success, :messages, :notice, :alert
 
   protect_from_forgery with: :exception

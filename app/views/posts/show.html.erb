@@ -28,7 +28,7 @@
   </li>
   <li>
     <% if can? :destroy, @post %>
-      <button><%= link_to 'Remove Post', :method => :delete %></button>
+      <button><%= link_to 'Remove Post', user_post_path(user_id: @post.user_id, id: @post.id), method: :delete %></button>
     <% end %>
   </li>
   <li class = "comments_container">
@@ -37,6 +37,7 @@
     <% else %>
       <% @post.comments.each do |comment| %>
         <p><%= comment.user.Name %>: <%= comment.Text %></p>
+        <%= render 'shared/del_comment_html', comment: %>
       <% end %>
     <% end %>
   </li>
