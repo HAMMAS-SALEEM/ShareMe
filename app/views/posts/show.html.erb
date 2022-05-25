@@ -26,6 +26,11 @@
       </li>
     </ul>
   </li>
+  <li>
+    <% if can? :manage, @post %>
+      <button><%= link_to 'Remove Post', url: "/users/#{@post.user_id}/posts/#{@post.id}", method: :delete %></button>
+    <% end %>
+  </li>
   <li class = "comments_container">
     <%if @post.comments.length == 0 %>
       <span>No comments posted</span>
