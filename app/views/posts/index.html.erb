@@ -21,8 +21,7 @@
       <ul>
         <li class = "post_card">
           <h3>Post: <%=index+1%></h3>
-          <p class = "post_text"><%= link_to post.Title, user_post_path(user_id: post.user_id, id: post.id) %></p>
-          
+          <p class = "post_text"><%= link_to post.Title, user_post_path(user_id: post.user_id, id: post.id) %></p>          
           <div class = "post_interactions">
             <p>Comments: 
               <% if post.CommentsCounter == nil %>

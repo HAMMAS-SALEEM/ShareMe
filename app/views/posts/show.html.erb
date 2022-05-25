@@ -27,7 +27,7 @@
     </ul>
   </li>
   <li>
-    <% if can? :manage, @post %>
+    <% if can? :destroy, @post %>
       <button><%= link_to 'Remove Post', url: "/users/#{@post.user_id}/posts/#{@post.id}", method: :delete %></button>
     <% end %>
   </li>

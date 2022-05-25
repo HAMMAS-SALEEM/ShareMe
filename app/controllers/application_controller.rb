@@ -1,4 +1,9 @@
 class ApplicationController < ActionController::Base
+  rescue_from CanCan::AccessDenied do |_exception|
+    flash[:error] = 'Access Denied'
+    redirect_to root_path
+  end
+
   add_flash_types :danger, :info, :warning, :success, :messages, :notice, :alert
 
   protect_from_forgery with: :exception

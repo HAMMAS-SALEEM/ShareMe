@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  # load_and_authorize_resource nested: :post
+
   def new
     @comment = Comment.new
   end
