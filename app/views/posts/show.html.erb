@@ -32,14 +32,18 @@
     <% end %>
   </li>
   <li class = "comments_container">
-    <%if @post.comments.length == 0 %>
-      <span>No comments posted</span>
-    <% else %>
-      <% @post.comments.each do |comment| %>
-        <p><%= comment.user.Name %>: <%= comment.Text %></p>
-        <%= render 'shared/del_comment_html', comment: %>
+    <ul>
+      <%if @post.comments.length == 0 %>
+        <li><span>No comments posted</span></li>
+      <% else %>
+        <% @post.comments.each do |comment| %>
+          <li class = "comments_flex">
+          <p><%= comment.user.Name %>: <%= comment.Text %></p>
+          <%= render 'shared/del_comment_html', comment: %>
+          </li>
+        <% end %>
       <% end %>
-    <% end %>
+    </ul>
   </li>
 </ul>
 <button><%= link_to 'Add Comment', new_user_post_comment_path(user_id: @post.user_id, post_id: @post.id) %></button>

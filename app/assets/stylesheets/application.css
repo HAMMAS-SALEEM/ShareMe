@@ -46,6 +46,11 @@ li {
   width: 150px;
 }
 
+.comments_flex {
+  display: flex;
+  justify-content: space-between;
+}
+
 .post_button_container,
 .pagination_button_container {
   display: flex;
