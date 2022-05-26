@@ -9,11 +9,11 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(Text: comment_params[:Text], user_id: current_user.id, post_id: @post.id)
     if @comment.save
-      flash[:notice] = 'Comment is created successfully'
+      flash[:success] = 'Comment is created successfully'
       @post.increment!(:CommentsCounter)
       redirect_to user_posts_url
     else
-      flash[:notice] = 'Comment is not created'
+      flash[:error] = 'Comment is not created'
     end
   end
 
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:post_id])
     @comment = @post.comments.find(params[:id]).destroy
-    redirect_to user_posts_path(@user, @post)
+    redirect_to user_post_path(@user, @post)
     @post.decrement!(:CommentsCounter)
   end
 
