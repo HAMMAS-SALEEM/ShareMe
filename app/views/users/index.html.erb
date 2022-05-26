@@ -1,21 +1,23 @@
 <ul class = "page_body">
   <% @users.each do |person| %>
-    <li class = "user_container">
-      <ul>
-        <li class = "user_details">
-          <img class = "user_image" src=<%= person.Photo %> alt="user image" />
-          <div class = "user_data">
-            <h2><%= person.Name %></h2>
-            <p class = "total_posts">Number of Posts: 
-              <% if person.Posts_Counter == nil %>
-                0
-              <% else %>
-                <%= person.Posts_Counter %>
-              <% end %>
-            </p>
-          </div>
-        </li>
-      </ul>
-    </li>
+    <%= link_to person, class: "user_link" do %>
+      <li class = "user_container">
+        <ul>
+          <li class = "user_details">
+            <img class = "user_image" src=<%= person.Photo %> alt="user image" />
+            <div class = "user_data">
+              <h2><%= person.Name %></h2>
+              <p class = "total_posts">Number of Posts: 
+                <% if person.Posts_Counter == nil %>
+                  0
+                <% else %>
+                  <%= person.Posts_Counter %>
+                <% end %>
+              </p>
+            </div>
+          </li>
+        </ul>
+      </li>
+    <% end %>
   <% end %>
 </ul>

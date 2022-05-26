@@ -12,6 +12,10 @@ li {
   padding: 20px;
 }
 
+.user_link, .posts_link {
+  text-decoration: none;
+}
+
 .user_details {
   align-items: center;
   width: 100%;
@@ -44,6 +48,11 @@ li {
 .post_interactions {
   align-self: flex-end;
   width: 150px;
+}
+
+.post-dlt-btn {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .comments_flex {
@@ -122,7 +131,8 @@ ul .user_container:not(:first-child),
 #user_password,
 #user_password_confirmation,
 .reg-log-btn,
-.actions > input[type="submit"] {
+.actions > input[type="submit"],
+#user_role {
   width: 300px;
   height: 30px;
 }
@@ -135,7 +145,8 @@ ul .user_container:not(:first-child),
   #user_password,
   #user_password_confirmation,
   .reg-log-btn,
-  .actions > input[type="submit"] {
+  .actions > input[type="submit"],
+  #user_role {
     width: 450px;
   }
 }

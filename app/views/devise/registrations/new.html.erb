@@ -36,6 +36,11 @@
     <%= f.text_area :Bio, autofocus: true, autocomplete: "bio", class: "form-control", required: true %>
   </div>
 
+  <div class="field">
+    <%= f.label 'Role (admin or author)' %><br />
+    <%= f.text_field :role, autofocus: true, autocomplete: "role", class: "form-control" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Register", class: "reg-log-btn" %>
   </div>

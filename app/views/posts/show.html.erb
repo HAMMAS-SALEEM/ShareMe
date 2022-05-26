@@ -2,7 +2,7 @@
   <li class = "complete_post">
     <ul class = "post_head">
       <li>
-        <p>Post: <%= @post.id %> by <%= @post.user.Name %> </p>
+        <p>Post: <%= @post.id %> by <%= @post.user.Name %></p>
       </li>
       <li class = "post_interactions">
         <p>Comments: 
@@ -25,11 +25,11 @@
         <p><%= @post.Text %></p>
       </li>
     </ul>
-  </li>
-  <li>
-    <% if can? :destroy, @post %>
-      <button><%= link_to 'Remove Post', user_post_path(user_id: @post.user_id, id: @post.id), method: :delete %></button>
-    <% end %>
+    <ul class = "post-dlt-btn">
+      <li>
+        <%= render 'shared/del_post', post: @post %>
+      </li>
+    </ul>
   </li>
   <li class = "comments_container">
     <ul>
@@ -39,12 +39,12 @@
         <% @post.comments.each do |comment| %>
           <li class = "comments_flex">
           <p><%= comment.user.Name %>: <%= comment.Text %></p>
-          <%= render 'shared/del_comment_html', comment: %>
+          <%= render 'shared/del_comment', comment: %>
           </li>
         <% end %>
       <% end %>
     </ul>
   </li>
 </ul>
-<button><%= link_to 'Add Comment', new_user_post_comment_path(user_id: @post.user_id, post_id: @post.id) %></button>
+<button><%= link_to 'Add Comment', new_user_post_comment_path(@post.user, @post) %></button>
 <%= render 'likes/form' %>

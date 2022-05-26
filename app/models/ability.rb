@@ -4,9 +4,9 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    if user.role.to_s == :admin.to_s
+    if user.role == 'admin'
       can :manage, :all
-    else
+    end
       can :destroy, Post do |post|
         post.try(:user) == user
       end
@@ -14,7 +14,6 @@ class Ability
       can :destroy, Comment do |comment|
         comment.try(:user) == user
       end
-    end
     can :read, :all
   end
 end
