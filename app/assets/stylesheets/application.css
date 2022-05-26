@@ -12,7 +12,8 @@ li {
   padding: 20px;
 }
 
-.user_link, .posts_link {
+.user_link,
+.posts_link {
   text-decoration: none;
 }
 
