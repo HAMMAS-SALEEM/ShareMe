@@ -17,7 +17,13 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:post_id])
+    @comment = @post.comments.find(params[:id]).destroy
+    redirect_to user_posts_path(@user, @post)
+    @post.decrement!(:CommentsCounter)
+  end
 
   private
 

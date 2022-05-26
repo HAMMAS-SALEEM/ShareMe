@@ -14,7 +14,7 @@ class User < ApplicationRecord
     posts.limit(3).order(created_at: :desc)
   end
 
-  # def admin?
-  #   role == 'admin'
-  # end
+  def admin?(rol)
+    role.to_s == rol.to_s
+  end
 end
