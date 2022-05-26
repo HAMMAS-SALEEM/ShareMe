@@ -11,11 +11,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @user = current_user
+    @user = User.find(params[:id])
     @post = @user.posts.new(Title: post_params[:Title], Text: post_params[:Text])
     if @post.save
       @post.update_posts_counter
-      redirect_to current_user
+      redirect_to @user
       flash[:notice] = 'You have successfully created a post'
     else
       render :new, alert: 'Error'
@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   def destroy
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id]).destroy
+    redirect_to user_path(@user)
   end
 
   private

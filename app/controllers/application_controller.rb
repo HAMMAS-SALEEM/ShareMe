@@ -4,11 +4,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
-  # rescue_from ActiveRecord::RecordNotFound do |_exception|
-  #   flash[:error] = 'No record found'
-  #   redirect_to root_path
-  # end
-
   add_flash_types :danger, :info, :warning, :success, :messages, :notice, :alert
 
   protect_from_forgery with: :exception
@@ -18,9 +13,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def update_allowed_parameters
-    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:Name, :Bio, :Photo, :email, :password) }
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:Name, :Bio, :Photo, :email, :password, :role) }
     devise_parameter_sanitizer.permit(:account_update) do |u|
-      u.permit(:Name, :Bio, :Photo, :email, :password, :current_password)
+      u.permit(:Name, :Bio, :Photo, :email, :password, :current_password, :role)
     end
   end
 end
