@@ -2,8 +2,8 @@ class Post < ApplicationRecord
   include ApplicationHelper
 
   belongs_to :user
-  has_many :likes
-  has_many :comments
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :Title, presence: true, length: { maximum: 250 }
   validates :CommentsCounter, numericality: { greater_than_or_equal_to: 0 }

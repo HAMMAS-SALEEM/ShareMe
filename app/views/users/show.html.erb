@@ -47,6 +47,6 @@
     </ul>
   <li>
   <li class = "post_button_container">
-    <button type="button" class = "posts_button">See all posts</button>
+    <button type="button" class= "posts_button" ><%= link_to "See all posts", user_posts_path(user_id: @user.id), class: 'posts_link' %></button>
   </li>
 </ul>
