@@ -4,7 +4,7 @@ RSpec.describe 'Users', type: :request do
   before(:example) do
     User.destroy_all
     @user = User.create(Name: 'Hammas', Photo: 'img.jpg', Bio: 'Developer', email: 'test@email.com',
-    password: 'password', confirmed_at: Time.now, Posts_Counter: 0)
+                        password: 'password', confirmed_at: Time.now, Posts_Counter: 0)
     @user.confirm
     sign_in @user
     get users_path
