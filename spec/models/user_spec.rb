@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
                         email: 'example@email.com', password: 'example', confirmed_at: Time.now)
     @user.confirm
     @post = Post.create(Title: 'Intro to JS', Text: 'Full Stack Development', CommentsCounter: 0,
-                        LikesCounter: 0)
+                        LikesCounter: 0, user_id: @user.id)
     @like = Like.new(user_id: @user.id, post_id: @post.id, post: @post)
     @like.save
   end
@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
       Post.create(Title: 'Intro to JS', Text: 'Full Stack Development', CommentsCounter: 0, LikesCounter: 0,
                   user_id: @user.id)
       user_posts = @user.recent_posts
-      expect(user_posts.length).to be 0
+      expect(user_posts.length).to be 2
     end
   end
 end
