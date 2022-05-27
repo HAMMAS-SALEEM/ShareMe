@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { User.new(Name: 'Peter', Photo: '123.jpg', Bio: 'Developer from US', Posts_Counter: 0) }
-  before { subject.save }
+  before(:each) do
+    subject = User.new(Name: 'Peter', Photo: '123.jpg', Bio: 'Developer from US', Posts_Counter: 0)
+    subject.save
+  end
   context 'testing validations of user model' do
     it 'should have a username' do
       subject.Name = nil

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'User show page', type: :feature do
   before(:each) do
-    User.destroy_all
     @user = User.create(Name: 'Hammas', Photo: 'img.jpg', Bio: 'Developer', email: 'test@email.com',
                         password: 'password', confirmed_at: Time.now, Posts_Counter: 0)
     @user.confirm
