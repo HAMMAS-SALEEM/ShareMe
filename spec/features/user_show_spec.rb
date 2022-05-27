@@ -6,7 +6,8 @@ RSpec.describe 'User show page', type: :feature do
     @user = User.create(Name: 'Hammas', Photo: 'img.jpg', Bio: 'Developer', email: 'test@email.com',
                         password: 'password', confirmed_at: Time.now, Posts_Counter: 0)
     @user.confirm
-    @post = Post.create(Title: 'Intro to JS', Text: 'Full Stack Development', CommentsCounter: 0, LikesCounter: 0, user_id: @user.id)
+    @post = Post.create(Title: 'Intro to JS', Text: 'Full Stack Development', CommentsCounter: 0, LikesCounter: 0,
+                        user_id: @user.id)
     visit new_user_session_path
     fill_in 'Email', with: 'test@email.com'
     fill_in 'Password', with: 'password'
@@ -41,4 +42,3 @@ RSpec.describe 'User show page', type: :feature do
     end
   end
 end
-
