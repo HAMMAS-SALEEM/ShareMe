@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'login page', type: :feature do
   before(:each) do
-    User.create(Name: 'example', Posts_Counter: 0, email: 'example@email.com', password: 'hammas')
+    User.destroy_all
+    @user = User.create(Name: 'Hammas', Photo: 'img.jpg', Bio: 'Developer', email: 'test@email.com',
+                        password: 'password', confirmed_at: Time.now, Posts_Counter: 0)
+    @user.confirm
     visit user_session_path
   end
   context 'should render login page elements' do
@@ -33,10 +36,11 @@ RSpec.describe 'login page', type: :feature do
     end
     it 'should redirect to users page after logging in with right entries' do
       visit new_user_session_path
-      fill_in 'Email', with: 'example@email.com'
-      fill_in 'Password', with: 'hammas'
+      fill_in 'Email', with: 'test@email.com'
+      fill_in 'Password', with: 'password'
       click_button 'Log in'
-      expect(page).to have_content 'You have to confirm your email address before continuing.'
+      expect(page).to have_http_status :ok
+      expect(page).to have_content 'Signed in successfully'
     end
   end
 end

@@ -1,8 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
+  before(:example) do
+    User.destroy_all
+    @user = User.create(Name: 'Hammas', Photo: 'img.jpg', Bio: 'Developer', email: 'test@email.com',
+                        password: 'password', confirmed_at: Time.now, Posts_Counter: 0)
+    @user.confirm
+    sign_in @user
+    @post = Post.create(Title: 'Intro to JS', Text: 'Full Stack Development',
+                        CommentsCounter: 0, LikesCounter: 0, user_id: @user.id)
+    get user_posts_path(@user)
+  end
+
   describe 'GET /index' do
-    before(:example) { get '/users/5/posts' }
     it 'renders http status' do
       expect(response).to have_http_status :ok
     end
@@ -12,12 +22,12 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'renders correct placeholder' do
-      expect(response.body).to include '<h1>Posts#index</h1>'
+      expect(response.body).to include @post.Title
     end
   end
 
   describe 'GET /show' do
-    before(:example) { get '/users/1/posts/1' }
+    before(:example) { get user_post_path(@user, @post) }
     it 'renders http status' do
       expect(response).to have_http_status :ok
     end
@@ -27,7 +37,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'renders correct placeholder' do
-      expect(response.body).to include '<h1>Single post</h1>'
+      expect(response.body).to include @post.Text
     end
   end
 end
