@@ -11,8 +11,11 @@ RSpec.describe 'Posts show page', type: :feature do
     @user1.confirm
     @post = Post.create(Title: 'My title', Text: 'My text', CommentsCounter: 0, LikesCounter: 0, user_id: @user.id)
     @comment = Comment.create(Text: 'My first comment', user_id: @user.id, post_id: @post.id)
-    @comment = Comment.create(Text: 'My second comment', user_id: @user1.id, post_id: @post.id)
-    @like = Like.create(user_id: @user.id, post_id: @post.id, created_at: Time.now, updated_at: Time.now)
+    @comment.update_comments_counter
+    @comment1 = Comment.create(Text: 'My second comment', user_id: @user1.id, post_id: @post.id)
+    @comment1.update_comments_counter
+    @like = Like.create(created_at: Time.now, updated_at: Time.now, user_id: @user.id, post_id: @post.id)
+    @like.update_likes_counter
     visit new_user_session_path
     fill_in 'Email', with: 'test@email.com'
     fill_in 'Password', with: 'password'
@@ -30,7 +33,7 @@ RSpec.describe 'Posts show page', type: :feature do
     end
 
     it 'shows the number of the comments of the post' do
-      expect(page).to have_content 'Comments: 0'
+      expect(page).to have_content 'Comments: 2'
     end
 
     it 'shows the number of the likes of the post' do
