@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'User show page', type: :feature do
   before(:each) do
-    @user = User.create(id: 1, Name: 'Hammas', Photo: 'img.jpg', Bio: 'Developer', email: 'test@email.com',
+    @user = User.create(id: 17, Name: 'Hammas', Photo: 'img.jpg', Bio: 'Developer', email: 'test@email.com',
                         password: 'password', confirmed_at: Time.now)
     @user.confirm
+    @post = Post.create(id: 1, user: @user, Title: '2', Text: 'Full Stack Development')
     visit new_user_session_path
     fill_in 'Email', with: 'test@email.com'
     fill_in 'Password', with: 'password'
@@ -33,10 +34,8 @@ RSpec.describe 'User show page', type: :feature do
       expect(page).to have_button('Pagination')
     end
     # it 'should return individual post' do
-    #   @post = Post.create(id: 1, user_id: @user.id, Title: 'Intro to JS',
-    #                       Text: 'Full Stack Development', CommentsCounter: 0, LikesCounter: 0)
-    #   visit user_post_path(user_id: @user.id, id: @post.id)
-    #   expect(page).to have_current_path(user_post_path(@user, @post))
+    #   click_button 'See all posts'
+    #   expect(current_path).to eq user_url id: @user.id
     # end
   end
 end

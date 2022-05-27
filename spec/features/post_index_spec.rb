@@ -5,6 +5,7 @@ RSpec.describe 'Post index page', type: :feature do
     @user = User.create(Name: 'Hammas', Photo: 'img.jpg', Bio: 'Developer', email: 'test@email.com',
                         password: 'password', confirmed_at: Time.now)
     @user.confirm
+    
     visit new_user_session_path
     fill_in 'Email', with: 'test@email.com'
     fill_in 'Password', with: 'password'
